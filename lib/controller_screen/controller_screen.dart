@@ -21,6 +21,15 @@ class _ControllerScreenState extends State<ControllerScreen> {
       currentScreen = index;
     });
   }
+  Future<bool> _willPopScope() async {
+    if(currentScreen > 0) {
+      setState(() {
+        currentScreen--;
+      });
+      return false;
+    }
+    return true;
+  }
   @override
   Widget build(BuildContext context) {
     var screens = [
@@ -78,7 +87,10 @@ class _ControllerScreenState extends State<ControllerScreen> {
         ],
         backgroundColor: Colors.transparent,
       ),
-      body: screens[currentScreen],
+      body: WillPopScope(
+        onWillPop: _willPopScope,
+          child: screens[currentScreen]
+      ),
       bottomNavigationBar: CustomBottomBar(
           currentIndex: currentIndex,
           onTabSelected: (index) {
