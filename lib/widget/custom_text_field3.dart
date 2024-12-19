@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class CustomTextField2 extends StatelessWidget {
+class CustomTextField3 extends StatelessWidget {
   final String labelText;
   final String? hintText;
   final TextInputType? keyboardType;
   final Function(String) text;
 
-  const CustomTextField2({
+  const CustomTextField3({
     super.key,
     required this.labelText,
     this.hintText,
@@ -16,31 +16,28 @@ class CustomTextField2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController controller = TextEditingController(text: hintText);
     return Column(
       children: [
         Align(
             alignment: Alignment.topLeft,
             child: Text(
               labelText,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             )),
-        const SizedBox(
-          height: 10,
-        ),
         TextField(
+          controller: controller,
           onChanged: (p0) {
             text(p0);
           },
+          autofocus: false,
+          readOnly: true,
           decoration: InputDecoration(
               hintText: hintText,
               floatingLabelBehavior: FloatingLabelBehavior.never,
               floatingLabelStyle: TextStyle(
                   color: Color(0xFF000000), fontWeight: FontWeight.bold),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
+              focusedBorder: UnderlineInputBorder(
                 borderSide: BorderSide(color: Color(0xFF808080), width: 2),
               )),
           keyboardType: keyboardType,
