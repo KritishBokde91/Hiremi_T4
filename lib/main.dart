@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hiremi_t4/controller_screen/controller_screen.dart';
+import 'package:hiremi_t4/screens/basic_details_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xFFF5F5F5)
       ),
       debugShowCheckedModeBanner: false,
-      home: ControllerScreen(),
+      home: BasicDetailsScreen(),
     );
   }
 }

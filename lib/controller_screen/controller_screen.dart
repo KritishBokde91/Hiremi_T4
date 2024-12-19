@@ -16,7 +16,8 @@ import 'package:hiremi_t4/widget/custom_text_field3.dart';
 import '../widget/horizontal_line.dart';
 
 class ControllerScreen extends StatefulWidget {
-  const ControllerScreen({super.key});
+  final Map<String, String> basicDetails;
+  const ControllerScreen({super.key, required this.basicDetails});
 
   @override
   State<ControllerScreen> createState() => _ControllerScreenState();
@@ -61,11 +62,13 @@ class _ControllerScreenState extends State<ControllerScreen> {
   Widget build(BuildContext context) {
     var screens = [
       ResumeScreen(),
-      EditProfileScreen(profileDetails: (p0) {
-        setState(() {
-          profileDetails = p0;
-        });
-      },),
+      EditProfileScreen(
+        profileDetails: (p0) {
+          setState(() {
+            profileDetails = p0;
+          });
+        },
+      ),
       EducationScreen(
         educationDetails: (p0) {
           setState(() {
@@ -101,11 +104,13 @@ class _ControllerScreenState extends State<ControllerScreen> {
           });
         },
       ),
-      ContactDetails(contactDetail: (p0) {
-        setState(() {
-          contactDetails = p0;
-        });
-      },),
+      ContactDetails(
+        contactDetail: (p0) {
+          setState(() {
+            contactDetails = p0;
+          });
+        },
+      ),
     ];
     final size = MediaQuery.of(context).size;
     return Scaffold(
@@ -277,7 +282,9 @@ class _ControllerScreenState extends State<ControllerScreen> {
               ),
               CustomTextField3(
                 labelText: 'Full name',
-                hintText: 'Kritish Bokde',
+                hintText: widget.basicDetails.isEmpty
+                    ? 'Kritish Bokde'
+                    : widget.basicDetails['fullName'],
                 text: (p0) {
                   setState(() {
                     fullName.text = p0;
@@ -289,7 +296,9 @@ class _ControllerScreenState extends State<ControllerScreen> {
               ),
               CustomTextField3(
                 labelText: "Father's Full Name",
-                hintText: 'Subhash Bokde',
+                hintText: widget.basicDetails.isEmpty
+                    ? "Subhash Bokde"
+                    : widget.basicDetails['fatherName']!,
                 text: (p0) {
                   setState(() {
                     fatherName.text = p0;
@@ -301,7 +310,9 @@ class _ControllerScreenState extends State<ControllerScreen> {
               ),
               CustomTextField3(
                 labelText: 'Gender',
-                hintText: 'male',
+                hintText: widget.basicDetails.isEmpty
+                    ? "male"
+                    : widget.basicDetails['gender']!,
                 text: (p0) {
                   setState(() {
                     gender.text = p0;
@@ -313,7 +324,9 @@ class _ControllerScreenState extends State<ControllerScreen> {
               ),
               CustomTextField3(
                 labelText: 'Date of Birth',
-                hintText: '01/08/2005',
+                hintText: widget.basicDetails.isEmpty
+                    ? "01/08/2005"
+                    : widget.basicDetails['dateOfBirth']!,
                 text: (p0) {
                   setState(() {
                     dob.text = p0;
@@ -325,7 +338,9 @@ class _ControllerScreenState extends State<ControllerScreen> {
               ),
               CustomTextField3(
                 labelText: 'Birth Place',
-                hintText: 'Nagpur',
+                hintText: widget.basicDetails.isEmpty
+                    ? "Maharashtra"
+                    : widget.basicDetails['state']!,
                 text: (p0) {
                   setState(() {
                     birthPlace.text = p0;
@@ -337,7 +352,9 @@ class _ControllerScreenState extends State<ControllerScreen> {
               ),
               CustomTextField3(
                 labelText: 'Current City',
-                hintText: profileDetails.isEmpty ? 'Nagpur, Maharashtra' : "${profileDetails['city']}, ${profileDetails['state']}",
+                hintText: profileDetails.isEmpty
+                    ? 'Nagpur, Maharashtra'
+                    : "${profileDetails['city']}, ${profileDetails['state']}",
                 text: (p0) {
                   setState(() {
                     currentCity.text = p0;
@@ -349,7 +366,9 @@ class _ControllerScreenState extends State<ControllerScreen> {
               ),
               CustomTextField3(
                 labelText: 'Differently Abled',
-                hintText: profileDetails.isEmpty ? 'No' : profileDetails['differentlyAbled'],
+                hintText: profileDetails.isEmpty
+                    ? 'No'
+                    : profileDetails['differentlyAbled'],
                 text: (p0) {
                   setState(() {
                     differentlyDisabled.text = p0;
@@ -361,7 +380,9 @@ class _ControllerScreenState extends State<ControllerScreen> {
               ),
               CustomTextField3(
                 labelText: 'Marital Status',
-                hintText: profileDetails.isEmpty ? 'Single' : profileDetails['maritalStatus'],
+                hintText: profileDetails.isEmpty
+                    ? 'Single'
+                    : profileDetails['maritalStatus'],
                 text: (p0) {
                   setState(() {
                     maritalStatus.text = p0;
@@ -373,7 +394,9 @@ class _ControllerScreenState extends State<ControllerScreen> {
               ),
               CustomTextField3(
                 labelText: 'Career Break',
-                hintText: profileDetails.isEmpty ? 'No' : profileDetails['careerBreak'],
+                hintText: profileDetails.isEmpty
+                    ? 'No'
+                    : profileDetails['careerBreak'],
                 text: (p0) {
                   setState(() {
                     careerBreak.text = p0;
@@ -422,7 +445,9 @@ class _ControllerScreenState extends State<ControllerScreen> {
               ),
               CustomTextField3(
                 labelText: 'Email',
-                hintText: 'example@gmail.com',
+                hintText: widget.basicDetails.isEmpty
+                    ? "kritishbokde.official@gmail.com"
+                    : widget.basicDetails['email']!,
                 text: (p0) {
                   setState(() {
                     email.text = p0;
@@ -434,7 +459,9 @@ class _ControllerScreenState extends State<ControllerScreen> {
               ),
               CustomTextField3(
                 labelText: 'Contact Number',
-                hintText: contactDetails.isEmpty ? '0000000000' : contactDetails['contactNumber'],
+                hintText: contactDetails.isEmpty
+                    ? '0000000000'
+                    : contactDetails['contactNumber'],
                 text: (p0) {
                   setState(() {
                     contactNumber.text = p0;
@@ -446,7 +473,9 @@ class _ControllerScreenState extends State<ControllerScreen> {
               ),
               CustomTextField3(
                 labelText: 'WhatsApp Number',
-                hintText: contactDetails.isEmpty ? '0000000000' : contactDetails['whatsAppNumber'],
+                hintText: contactDetails.isEmpty
+                    ? '0000000000'
+                    : contactDetails['whatsAppNumber'],
                 text: (p0) {
                   setState(() {
                     whatsAppNumber.text = p0;
@@ -1122,7 +1151,8 @@ class _ControllerScreenState extends State<ControllerScreen> {
                                     Border.all(color: Colors.black, width: 0.5),
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.only(right: 20.0, left: 10, top: 10, bottom: 10),
+                                padding: const EdgeInsets.only(
+                                    right: 20.0, left: 10, top: 10, bottom: 10),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
