@@ -282,9 +282,7 @@ class _ControllerScreenState extends State<ControllerScreen> {
               ),
               CustomTextField3(
                 labelText: 'Full name',
-                hintText: widget.basicDetails.isEmpty
-                    ? 'Kritish Bokde'
-                    : widget.basicDetails['fullName'],
+                hintText: 'Kritish Bokde',
                 text: (p0) {
                   setState(() {
                     fullName.text = p0;
@@ -296,9 +294,7 @@ class _ControllerScreenState extends State<ControllerScreen> {
               ),
               CustomTextField3(
                 labelText: "Father's Full Name",
-                hintText: widget.basicDetails.isEmpty
-                    ? "Subhash Bokde"
-                    : widget.basicDetails['fatherName']!,
+                hintText: 'Subhash Bokde',
                 text: (p0) {
                   setState(() {
                     fatherName.text = p0;
@@ -310,9 +306,7 @@ class _ControllerScreenState extends State<ControllerScreen> {
               ),
               CustomTextField3(
                 labelText: 'Gender',
-                hintText: widget.basicDetails.isEmpty
-                    ? "male"
-                    : widget.basicDetails['gender']!,
+                hintText: 'male',
                 text: (p0) {
                   setState(() {
                     gender.text = p0;
@@ -324,9 +318,7 @@ class _ControllerScreenState extends State<ControllerScreen> {
               ),
               CustomTextField3(
                 labelText: 'Date of Birth',
-                hintText: widget.basicDetails.isEmpty
-                    ? "01/08/2005"
-                    : widget.basicDetails['dateOfBirth']!,
+                hintText: '01/08/2005',
                 text: (p0) {
                   setState(() {
                     dob.text = p0;
@@ -338,9 +330,7 @@ class _ControllerScreenState extends State<ControllerScreen> {
               ),
               CustomTextField3(
                 labelText: 'Birth Place',
-                hintText: widget.basicDetails.isEmpty
-                    ? "Maharashtra"
-                    : widget.basicDetails['state']!,
+                hintText: 'Maharashtra',
                 text: (p0) {
                   setState(() {
                     birthPlace.text = p0;
@@ -353,7 +343,7 @@ class _ControllerScreenState extends State<ControllerScreen> {
               CustomTextField3(
                 labelText: 'Current City',
                 hintText: profileDetails.isEmpty
-                    ? 'Nagpur, Maharashtra'
+                    ? "${widget.basicDetails['currentCity']}, ${widget.basicDetails['currentState']}"
                     : "${profileDetails['city']}, ${profileDetails['state']}",
                 text: (p0) {
                   setState(() {
@@ -367,7 +357,7 @@ class _ControllerScreenState extends State<ControllerScreen> {
               CustomTextField3(
                 labelText: 'Differently Abled',
                 hintText: profileDetails.isEmpty
-                    ? 'No'
+                    ? widget.basicDetails['differentlyAbled']
                     : profileDetails['differentlyAbled'],
                 text: (p0) {
                   setState(() {
@@ -381,7 +371,7 @@ class _ControllerScreenState extends State<ControllerScreen> {
               CustomTextField3(
                 labelText: 'Marital Status',
                 hintText: profileDetails.isEmpty
-                    ? 'Single'
+                    ? widget.basicDetails['maritalStatus']
                     : profileDetails['maritalStatus'],
                 text: (p0) {
                   setState(() {
@@ -395,7 +385,7 @@ class _ControllerScreenState extends State<ControllerScreen> {
               CustomTextField3(
                 labelText: 'Career Break',
                 hintText: profileDetails.isEmpty
-                    ? 'No'
+                    ? widget.basicDetails['careerBreak']
                     : profileDetails['careerBreak'],
                 text: (p0) {
                   setState(() {
@@ -445,9 +435,7 @@ class _ControllerScreenState extends State<ControllerScreen> {
               ),
               CustomTextField3(
                 labelText: 'Email',
-                hintText: widget.basicDetails.isEmpty
-                    ? "kritishbokde.official@gmail.com"
-                    : widget.basicDetails['email']!,
+                hintText: 'kritishbokde.official@gmail.com',
                 text: (p0) {
                   setState(() {
                     email.text = p0;
@@ -460,7 +448,7 @@ class _ControllerScreenState extends State<ControllerScreen> {
               CustomTextField3(
                 labelText: 'Contact Number',
                 hintText: contactDetails.isEmpty
-                    ? '0000000000'
+                    ? widget.basicDetails['contactNumber']
                     : contactDetails['contactNumber'],
                 text: (p0) {
                   setState(() {
@@ -474,7 +462,7 @@ class _ControllerScreenState extends State<ControllerScreen> {
               CustomTextField3(
                 labelText: 'WhatsApp Number',
                 hintText: contactDetails.isEmpty
-                    ? '0000000000'
+                    ? widget.basicDetails['whatsAppNumber']
                     : contactDetails['whatsAppNumber'],
                 text: (p0) {
                   setState(() {
@@ -541,7 +529,6 @@ class _ControllerScreenState extends State<ControllerScreen> {
               ),
               educationDetails.isEmpty
                   ? Container(
-                      height: size.height * 0.1,
                       width: size.width,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
@@ -556,7 +543,7 @@ class _ControllerScreenState extends State<ControllerScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'B.Tech, CSE',
+                              "${widget.basicDetails['degree']}, ${widget.basicDetails['branch']}",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 18),
                             ),
@@ -564,7 +551,7 @@ class _ControllerScreenState extends State<ControllerScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Bhopal, Madhya Pradesh',
+                                  "${widget.basicDetails['collegeCity']}, ${widget.basicDetails['collegeState']}",
                                   style: TextStyle(
                                       color: Colors.grey,
                                       fontSize: 16,
@@ -577,7 +564,7 @@ class _ControllerScreenState extends State<ControllerScreen> {
                               ],
                             ),
                             Text(
-                              '2025 | Percentage: 70.00%',
+                              "${widget.basicDetails['passOutYear']} | Percentage: ${widget.basicDetails['percentage']}",
                               style:
                                   TextStyle(color: Colors.grey, fontSize: 12),
                             ),
@@ -691,8 +678,8 @@ class _ControllerScreenState extends State<ControllerScreen> {
                       width: size.width,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey[500]!.withOpacity(0.1),
-                        border: Border.all(color: Colors.grey[300]!, width: 2),
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black, width: 0.5),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
@@ -702,21 +689,21 @@ class _ControllerScreenState extends State<ControllerScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Add Job Title',
+                              widget.basicDetails['jobTitle']!,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
-                                  color: Colors.grey[700]),
+                                  color: Colors.black),
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Organization',
+                                  widget.basicDetails['organization']!,
                                   style: TextStyle(
-                                      color: Colors.grey,
+                                      color: Colors.black,
                                       fontSize: 16,
-                                      fontWeight: FontWeight.w600),
+                                      fontWeight: FontWeight.w400),
                                 ),
                                 Icon(
                                   Icons.chevron_right_sharp,
@@ -725,9 +712,9 @@ class _ControllerScreenState extends State<ControllerScreen> {
                               ],
                             ),
                             Text(
-                              'Duration',
+                              widget.basicDetails['jobTitle']!,
                               style:
-                                  TextStyle(color: Colors.grey, fontSize: 12),
+                                  TextStyle(color: Colors.black, fontSize: 12),
                             ),
                           ],
                         ),
@@ -837,33 +824,51 @@ class _ControllerScreenState extends State<ControllerScreen> {
                 height: 15,
               ),
               projectDetails.isEmpty
-                  ? TextField(
-                      controller: project,
-                      readOnly: true,
-                      decoration: InputDecoration(
-                          hintText: 'Add Project title',
-                          hintStyle: TextStyle(
-                              color: Colors.grey[500]!,
-                              fontWeight: FontWeight.bold),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide:
-                                BorderSide(color: Colors.grey[300]!, width: 2),
-                          ),
-                          floatingLabelBehavior: FloatingLabelBehavior.never,
-                          floatingLabelStyle: TextStyle(
-                              color: Color(0xFF000000),
-                              fontWeight: FontWeight.bold),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide:
-                                BorderSide(color: Colors.grey[300]!, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide:
-                                BorderSide(color: Colors.grey[300]!, width: 2),
-                          )),
+                  ? Container(
+                      width: size.width,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black, width: 0.5),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10.0, horizontal: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              widget.basicDetails['projectTitle']!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: Colors.black),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  widget.basicDetails['projectLink']!,
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                Icon(
+                                  Icons.chevron_right_sharp,
+                                  color: Colors.grey,
+                                ),
+                              ],
+                            ),
+                            Text(
+                              widget.basicDetails['projectDescription']!,
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 12),
+                            ),
+                          ],
+                        ),
+                      ),
                     )
                   : SizedBox(
                       child: ListView.builder(
@@ -974,14 +979,10 @@ class _ControllerScreenState extends State<ControllerScreen> {
                     width: size.width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: socialLinksDetails.isEmpty
-                          ? Colors.grey[500]!.withOpacity(0.1)
-                          : Colors.white,
+                      color: Colors.white,
                       border: Border.all(
-                          color: socialLinksDetails.isEmpty
-                              ? Colors.grey[300]!
-                              : Colors.black,
-                          width: socialLinksDetails.isEmpty ? 2 : 0.5),
+                          color: Colors.black,
+                          width: 0.5),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
@@ -999,12 +1000,10 @@ class _ControllerScreenState extends State<ControllerScreen> {
                           ),
                           Text(
                             socialLinksDetails.isEmpty
-                                ? 'Add Social Link'
+                                ? widget.basicDetails['linkedIn']!
                                 : socialLinksDetails['linkedIn']!,
                             style: TextStyle(
-                                color: socialLinksDetails.isEmpty
-                                    ? Colors.grey[600]
-                                    : Colors.black,
+                                color: Colors.black,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500),
                           ),
@@ -1019,14 +1018,10 @@ class _ControllerScreenState extends State<ControllerScreen> {
                     width: size.width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: socialLinksDetails.isEmpty
-                          ? Colors.grey[500]!.withOpacity(0.1)
-                          : Colors.white,
+                      color: Colors.white,
                       border: Border.all(
-                          color: socialLinksDetails.isEmpty
-                              ? Colors.grey[300]!
-                              : Colors.black,
-                          width: socialLinksDetails.isEmpty ? 2 : 0.5),
+                          color: Colors.black,
+                          width: 0.5),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
@@ -1044,12 +1039,10 @@ class _ControllerScreenState extends State<ControllerScreen> {
                           ),
                           Text(
                             socialLinksDetails.isEmpty
-                                ? 'Add Social Link'
+                                ? widget.basicDetails['gitHub']!
                                 : socialLinksDetails['gitHub']!,
                             style: TextStyle(
-                                color: socialLinksDetails.isEmpty
-                                    ? Colors.grey[600]
-                                    : Colors.black,
+                                color: Colors.black,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500),
                           ),
@@ -1100,39 +1093,39 @@ class _ControllerScreenState extends State<ControllerScreen> {
                 height: 15,
               ),
               languageDetails.isEmpty
-                  ? TextField(
-                      controller: languages,
-                      readOnly: true,
-                      decoration: InputDecoration(
-                          hintText: 'Add Language',
-                          hintStyle: TextStyle(
-                              color: Colors.grey[500]!,
-                              fontWeight: FontWeight.bold),
-                          floatingLabelBehavior: FloatingLabelBehavior.never,
-                          disabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide:
-                                BorderSide(color: Colors.grey[300]!, width: 2),
-                          ),
-                          floatingLabelStyle: TextStyle(
-                              color: Color(0xFF000000),
-                              fontWeight: FontWeight.bold),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide:
-                                BorderSide(color: Colors.grey[300]!, width: 2),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide:
-                                BorderSide(color: Colors.grey[300]!, width: 2),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide:
-                                BorderSide(color: Colors.grey[300]!, width: 2),
-                          )),
-                    )
+                  ? Container(
+                width: size.width,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white,
+                  border:
+                  Border.all(color: Colors.black, width: 0.5),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      right: 20.0, left: 10, top: 10, bottom: 10),
+                  child: Row(
+                    mainAxisAlignment:
+                    MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        widget.basicDetails['language']!,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18),
+                      ),
+                      Text(
+                        widget.basicDetails['proficiency']!,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 15),
+                      ),
+                    ],
+                  ),
+                ),
+              )
                   : SizedBox(
                       child: ListView.builder(
                         scrollDirection: Axis.vertical,

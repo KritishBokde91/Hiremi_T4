@@ -16,7 +16,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
   TextEditingController jobTitle = TextEditingController();
   TextEditingController joiningDate = TextEditingController();
   TextEditingController endDate = TextEditingController();
-  List<String> currentCompany = [];
+  String? currentCompany;
   int currentIndex = 0;
   List<String> employmentType = [
     'Full time',
@@ -172,7 +172,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
               ),
               const SizedBox(height: 10),
               CustomOptions(option: (p0) => setState(() {
-                currentCompany.add(p0);
+                currentCompany = p0;
               })),
               const SizedBox(height: 20),
               Row(
@@ -298,7 +298,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                     if (organizationName.text.isEmpty ||
                         jobTitle.text.isEmpty ||
                         joiningDate.text.isEmpty ||
-                        currentCompany.isEmpty ||
+                        currentCompany == null ||
                         (isCurrentCompany ? false : endDate.text.isEmpty) ||
                         employmentType.isEmpty) {
                       setState(() {

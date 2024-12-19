@@ -111,7 +111,6 @@ class _ProjectScreenState extends State<ProjectScreen> {
                     )),
                 keyboardType: TextInputType.text,
               ),
-
               Visibility(
                 visible: isVisible,
                 child: Padding(
